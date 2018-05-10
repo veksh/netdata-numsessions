@@ -12,3 +12,8 @@ this metric is missed from core netdata.
 As usual, no config is required by default
 - to disable plugin, set `command` to `/bin/false`
 - to change check interval, set `update_every`
+
+## compatibility
+
+Tested on Centos 7 and Suse SLES 11. As of netdata 1.10 `python.d.plugin` is not compatible with
+SLES 11 without some patching (see RPM spec in nearby repo for details).
