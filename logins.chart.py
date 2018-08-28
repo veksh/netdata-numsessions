@@ -13,6 +13,7 @@
 # - sles: /usr/lib64/netdata/plugins.d/python.d.plugin debug trace 1 logins
 # - centos: /usr/libexec/netdata/plugins.d/python.d.plugin debug trace 1 logins
 
+import re
 from bases.FrameworkServices.ExecutableService import ExecutableService
 
 # default module values (can be overridden per job in `config`)
@@ -50,5 +51,5 @@ class Service(ExecutableService):
         raw_data = self._get_raw_data()
         if not raw_data:
             return None
-        users = raw_data[0].split(',')[1].split(' ')[2]
+        users = re.findall('(\d+) user', raw_data[0])[0]
         return {'sessions': users }
